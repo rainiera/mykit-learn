@@ -1,0 +1,6 @@
+time to count 5-star reviews: 7.37141394615
+num 5-star reviews 579527
+
+time to make db conn: 0.0182199478149
+time to generate list: 26.8524730206
+num 5-star reviews 579527
