@@ -3,4 +3,5 @@
 /sandbox
 /papers
 /ml
+*.pyc
 
