@@ -1,0 +1,75 @@
+two ways of determining if two documents are similar:
+looking at reading patterns
+looking at content
+
+topic modeling looks at content of course
+
+need to know right level of abstraction
+
+use the right words
+capture the widest range of topics
+set the right window of context
+
+train LDA using wikipedia
+
+preprocess, train, score, and evaluate
+
+gensim - preprocess, train, score
+
+
+wikipedia is a good corpus:
+already highly contextualized, each document is talking about the right topic.
+preprocess by
+	getting the right window of context:
+		get rid of very short articles (<200 words)
+		get rid of metadata (use domain heuristics)
+	get the right words
+		sort words in each article by popularity
+		remove words that appear in more than 10% of the article, remove words that appear in less than 20 articles
+		word length, stoplists, lemmatization, parts of speech
+		keep top n words (50,000 to 100,000)
+	put you care about in a tfidf matrix
+
+LDA sees words in documents.
+W word
+N words in each document i
+M documents
+Z topic for the jth word in a document i
+theta - topic distribution for a document i
+each doc is a distribution of topics
+
+context, topic, word
+
+LDA is a bag of words model
+Model takes a lot of documents, lots of bags of words, learns a model that would explain how a document collection would have been generated in the first place
+alpha and beta are hyperparameters
+	alpha - control per document topic distribution
+		if high, every document is likely contain a mixture of topics and not just any single topic specifically
+		if low, a doc is more likely to be represented by a few topics
+		a parameter that sets the prior on the per-document topic distribution
+	beta  - per topic word distribution
+		if high, a topic may contain a lot of words
+		if low, a topic may contain a few words
+		a parameter that sets the prior on the per-topic word distribution
+high alpha - make documents look more similar to each other
+high beta - make topics look more similar to each other
+"""
+model.lda would contain all the topics made up of all the words with their probabilities of belonging to a topic
+"""
+How many topics (dimensions)?
+
+document = probability distribution over topics
+topic = probability distribution over words
+
+LDA model takes magazine as a bag of words -> will only get the words it was trained with.
+Even if the LDA model only understand 10% of the words, it's more than good enough to be able to identify that many topic distributions.
+Predicts how the magazine would have been generated.
+"""
+Output of an input into the model would be that each document gets represented as a distribution of LDA topics.
+"""
+Each document would appear different enough to be separable, and similar enough to be grouped.
+
+LDA space - simplex
+Lots of dimensionality
+
+Jensen-Shannon Divergence - distance from the points of the simplex
