@@ -1,2 +1,1 @@
-#A data science adventure.
-
+Random implementations and experiments
